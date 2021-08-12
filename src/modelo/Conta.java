@@ -1,5 +1,6 @@
+package modelo;
 
-public class Conta {
+public abstract class Conta {
 
 	private double saldo;
 	private String titular;
@@ -8,22 +9,20 @@ public class Conta {
 	
 	
 	
-	public Conta() {
-		
-	}
-
-	public Conta(double saldo) {
-		this.saldo = saldo;
-	}
-
+	
 	public void sacar(double valor) {
-		saldo = saldo - valor;		
-		
+		saldo = saldo -valor;
 	}
+
 	
 	public void depositar (double valor) {
 		saldo = saldo + valor;
 		
+	}
+	
+	public void transfere (double valor,Conta conta) {
+			sacar(valor);
+			conta.depositar(valor);
 	}
 
 	public String getTitular() {
@@ -54,6 +53,6 @@ public class Conta {
 		return saldo;
 	}
 
-	
+	public abstract String getTipo();
 	
 }
